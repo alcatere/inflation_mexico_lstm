@@ -45,7 +45,7 @@ def get_process_data(file_path:str) -> pd.DataFrame:
 
 # Define the LSTM model
 class LitLSTMModel(L.LightningModule):
-    def __init__(self, input_size, hidden_size, num_layers, output_size, learning_rate, dropout):
+    def __init__(self, input_size, hidden_size, num_layers, output_size, learning_rate, dropout=0.0):
         super(LitLSTMModel, self).__init__()
         self.save_hyperparameters()
         self.hidden_size = hidden_size
@@ -174,10 +174,10 @@ if __name__ == '__main__':
     # Hyper-parameters
     input_size = 1 # Number of features in the input
     hidden_size = 128 # Number of features in the hidden state
-    num_layers = 4
+    num_layers = 2
     dropout = 0.15
     output_size = 1 
-    learning_rate = 0.0001
+    learning_rate = 0.001
     num_epochs = 20
     seq_length = 12
     batch_size = 10
@@ -196,7 +196,7 @@ if __name__ == '__main__':
 
     # Create the DataModule
     data_module = LitTimeSeriesDataModule(scaled_data_train, scaled_data_validation, scaled_data_test, seq_length, batch_size)
-    model = LitLSTMModel(input_size, hidden_size, num_layers, output_size, learning_rate, dropout)
+    model = LitLSTMModel(input_size, hidden_size, num_layers, output_size, learning_rate)
 
     # Root model
     save_model_path = "./models/best_model_lightning.ckpt"
@@ -255,7 +255,7 @@ if __name__ == '__main__':
     plt.xlabel('Time Steps')
     plt.ylabel('Values')
     plt.legend()
-    plt.savefig('Loss_model.png')
+    plt.savefig('Loss_model_lightning.png')
 
     print('*' * 50)
     print('PROCESS FINISH')
