@@ -255,7 +255,7 @@ if __name__ == '__main__':
     plt.xlabel('Time Steps')
     plt.ylabel('Values')
     plt.legend()
-    plt.savefig('Loss_model_lightning.png')
+    plt.savefig('predictions_lightning.png')
 
     print('*' * 50)
     print('PROCESS FINISH')
