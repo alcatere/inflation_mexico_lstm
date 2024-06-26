@@ -14,3 +14,15 @@ This project focuses on building a time series model to analyze and predict the 
    ```bash
    git clone https://github.com/yourusername/inflation-mexico-model.git
 
+
+### Compare results
+
+- **Results of the predictions using Pytorch**: 
+
+![alt text](predictions_pytorch.png "predictions pytorch")
+
+- **Results of the predictions using Pytorch + Lightning**
+
+![alt text](predictions_lightning.png "predictions lightning")
+
+
